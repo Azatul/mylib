@@ -365,9 +365,12 @@ defmodule Mylib.Office do
   alias Mylib.Office.Admin
 
 
-  # Get profile by admin
-  def get_admin_profile(admin) do
-    Repo.get_by(AdminProfile, admin_id: admin.id)
+  def get_admin_profile!(id) do
+    get_admin_profile(id) || raise "Admin profile not found: #{id}"
+  end
+
+  def get_admin_profile(id) do
+    Repo.get(AdminProfile, id)
   end
 
   # Preload profile into admin

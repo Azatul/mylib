@@ -7,8 +7,6 @@ defmodule MylibWeb.AdminSettingsLive do
 
   def mount(_params, _session, socket) do
     current_admin = Office.get_admin_with_profile(socket.assigns.current_admin.id)
-
-
     current_profile = current_admin.admin_profile || %AdminProfile{}
 
     profile_form =
